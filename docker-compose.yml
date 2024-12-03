@@ -1,0 +1,85 @@
+version: '3'
+services:
+  nodered:
+    container_name: nodered
+    image: nodered/node-red
+    ports:
+      - "1880:1880"
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\nodered_data:/data
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\rabbitmq_data:/var/lib/rabbitmq
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\grafana_data:/var/lib/grafana
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\postgres_data:/var/lib/postgresql/data
+
+  hasura:
+    container_name: hasura
+    image: hasura/graphql-engine
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://myuser:mypassword@postgres:5432/mydb
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\hasura_data:/var/lib/hasura
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\pgadmin_data:/var/lib/pgadmin
+
+  python_app:
+    container_name: python_app
+    build:
+      context: ./python_app  # Path to your Python app directory
+    ports:
+      - "8000:8000"  # Adjust port as needed
+    networks:
+      - network_data
+    volumes:
+      - C:\dataprocessing\python_app:/app  # Mount your Python app directory
+
+networks:
+  network_data:
