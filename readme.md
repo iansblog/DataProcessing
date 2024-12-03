@@ -12,10 +12,21 @@
 Open up the terminal and run the following command:
 - Run docker-compose up -d 
 
+- Cleanup MS Windows
+  - Run docker-compose down
+  - Remove-Item -Path "C:\dataprocessing" -Recurse -Force
+
+- Cleanup Linux
+  - Run docker-compose down
+  - rm -rf /path/to/dataprocessing  
+
+
 ## Access the services:
 - Node-RED: Open your browser and go to http://localhost:1880
 - RabbitMQ Management UI: Visit http://localhost:15672 (login with guest/guest).
 - Grafana: Access http://localhost:3000 (default login is admin/admin).
 - Hasura GraphQL Engine: Go to http://localhost:8080
 - pgAdmin: Go to http://localhost:5050 
+
+
 
