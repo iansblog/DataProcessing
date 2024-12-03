@@ -22,11 +22,11 @@ Open up the terminal and run the following command:
 
 
 ## Access the services:
+Based on the usernames & passwords set in the .env file. 
+
+If you change anyting please update the configuration/postgress_config.sql file also. 
 - Node-RED: Open your browser and go to http://localhost:1880
 - RabbitMQ Management UI: Visit http://localhost:15672 (login with guest/guest).
 - Grafana: Access http://localhost:3000 (default login is admin/admin).
 - Hasura GraphQL Engine: Go to http://localhost:8080
-- pgAdmin: Go to http://localhost:5050 
-
-
-
+- pgAdmin: Go to http://localhost:5050  (admin@example.com / adminpassword) 
