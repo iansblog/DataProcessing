@@ -32,7 +32,9 @@ services:
 
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres    
+    ports:
+      - "5432:5432"
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -61,6 +63,9 @@ services:
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://${HASURA_DB_USER}:${HASURA_DB_PASSWORD}@postgres:5432/${HASURA_DB}
       HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${HASURA_DB_USER}:${HASURA_DB_PASSWORD}@postgres:5432/${HASURA_METADATA_DB}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
     networks:
       - network_data
     volumes:
@@ -92,11 +97,11 @@ services:
     build:
       context: ./python_app  # Path to your Python app directory
     ports:
-      - "8000:8000"  # Adjust port as needed
+      - "5000:5000"  # Adjust port as needed
     networks:
       - network_data
     volumes:
-      - C:\dataprocessing\python_app:/app  # Mount your Python app directory
+      - C:\dataprocessing\python_app:/python_app  # Mount your Python app directory
 
 networks:
   network_data:

@@ -10,4 +10,4 @@ def hello_world():
 # Example usage:
 if __name__ == "__main__":
     # Run the app on port 5000
-    app.run(debug=True, port=5000)
+    app.run(host='0.0.0.0', debug=True, port=5000)

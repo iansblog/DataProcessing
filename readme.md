@@ -30,3 +30,4 @@ If you change anyting please update the configuration/postgress_config.sql file 
 - Grafana: Access http://localhost:3000 (default login is admin/admin).
 - Hasura GraphQL Engine: Go to http://localhost:8080
 - pgAdmin: Go to http://localhost:5050  (admin@example.com / adminpassword) 
+- Flask application: Go to http://localhost:5000 

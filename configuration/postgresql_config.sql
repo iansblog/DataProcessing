@@ -1,6 +1,6 @@
 -- configuration/postgresql_config.sql
-CREATE DATABASE testHasuraDataBase;
-CREATE DATABASE hasuraMetadataDB;
+CREATE DATABASE testhasuradatabase;
+CREATE DATABASE hasurametadatadb;
 
 -- Create a new user for Hasura
 CREATE USER hasura_user WITH PASSWORD 'hasura_password';
