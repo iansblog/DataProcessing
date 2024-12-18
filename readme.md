@@ -41,7 +41,7 @@ Open up the terminal and run the following command:
 
 - Cleanup Linux
   - Run docker-compose down
-  - rm -rf /path/to/dataprocessing  
+  - rm -rf /dataprocessing  
 
 
 ## Access the services:
