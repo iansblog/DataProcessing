@@ -1,5 +1,10 @@
 # Data processing example
 
+## VS Code extensions used
+
+[https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+
 ## Overview
 ```mermaid
 flowchart TD
